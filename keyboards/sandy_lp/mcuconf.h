@@ -15,27 +15,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/* SPDX-License-Identifier: GPL-2.0-or-later */
-
 #pragma once
 
-/* Vial */
-#define VIAL_KEYBOARD_UID {0x82, 0xB5, 0xEC, 0x8C, 0x6C, 0x2D, 0xB6, 0x5F}
-#define VIAL_UNLOCK_COMBO_ROWS { 0, 4 }
-#define VIAL_UNLOCK_COMBO_COLS { 0, 0 }
+#include_next <mcuconf.h>
 
-/* RGB Lighting */
-#define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
-#define RGBLIGHT_LAYERS_RETAIN_VAL
-
-/* Dynamic Keymap */
-#define DYNAMIC_KEYMAP_LAYER_COUNT 8 // default:4
-
-/* Audio */
-#define AUDIO_PIN GP18
-#define AUDIO_PWM_DRIVER PWMD1
-#define AUDIO_PWM_CHANNEL RP2040_PWM_CHANNEL_A
-#define AUDIO_INIT_DELAY
-#define AUDIO_CLICKY
-#define MUSIC_MAP
-#define AUDIO_VOICES
+#undef RP_PWM_USE_PWM1
+#define RP_PWM_USE_PWM1 TRUE
