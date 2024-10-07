@@ -221,15 +221,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING (QMK_KEYBOARD ":" QMK_KEYMAP " @ " QMK_VERSION " | " QMK_BUILDDATE);
             }
             return false;
-        case BASE1: // Change default layer. If pressed with "Shift", write default layer to EEPROM.
+        case BASE1: // Change default layer & write default layer to EEPROM.
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
-                    set_single_persistent_default_layer(_BASE1);
-                    return false;
-                }
+                set_single_persistent_default_layer(_BASE1);
             }
-            return true;
-        case BASE2: // Change default layer. If pressed with "Shift", write default layer to EEPROM.
+            return false;
+        case BASE2: // Change default layer & write default layer to EEPROM.
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
                     set_single_persistent_default_layer(_BASE2);
@@ -237,14 +234,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             return true;
-        case BASE3: // Change default layer. If pressed with "Shift", write default layer to EEPROM.
+        case BASE3: // Change default layer & write default layer to EEPROM.
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
-                    set_single_persistent_default_layer(_BASE3);
-                    return false;
-                }
+                set_single_persistent_default_layer(_BASE3);
             }
-            return true;
+            return false;
         case DM_REC1: // Toggle recording status
             if (record->event.pressed) {
                 is_dm_rec1 = true;
