@@ -228,12 +228,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         case BASE2: // Change default layer & write default layer to EEPROM.
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
-                    set_single_persistent_default_layer(_BASE2);
-                    return false;
-                }
+                set_single_persistent_default_layer(_BASE2);
             }
-            return true;
+            return false;
         case BASE3: // Change default layer & write default layer to EEPROM.
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_BASE3);
