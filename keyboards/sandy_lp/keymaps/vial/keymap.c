@@ -207,7 +207,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 const uint8_t music_map[MATRIX_ROWS][MATRIX_COLS] = LAYOUT(
     36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49,
     22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35,
-     9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 
+     9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
      0,  1,  2,  3,  4,  5,  6,  7,  8
 );
 
@@ -284,23 +284,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 //------------------------------------------------------------------------------
 // Dynamic Macro
 //------------------------------------------------------------------------------
-void dynamic_macro_play_user(int8_t direction) {
+bool dynamic_macro_play_user(int8_t direction) {
     // Revert layer indicator, just after macro played.
     // It returns to base layer. WHY???
     layer_state_set_user(layer_state);
+    return true;
 }
 
 #ifdef RGBLIGHT_LAYER_BLINK // RGB Lighting & RGB Layer Blink
     // Blink indicator when start / stop recorging.
-    void dynamic_macro_record_start_user(int8_t direction) {
+    bool dynamic_macro_record_start_user(int8_t direction) {
         rgblight_blink_layer_repeat(9, 250, 3);//TODO マクロ記録中、ずっとブリンクならんの？
+        return true;
     }
 
-    void dynamic_macro_record_end_user(int8_t direction) {
+    bool dynamic_macro_record_end_user(int8_t direction) {
         //TODO is_dm_rec1,2を使って、ダイナミックマクロ記録中に、ずっとBlinkさせたりできないか？
         is_dm_rec1 = false;
         is_dm_rec2 = false;
         rgblight_blink_layer_repeat(10, 250, 3);
+        return true;
     }
 #endif
 
