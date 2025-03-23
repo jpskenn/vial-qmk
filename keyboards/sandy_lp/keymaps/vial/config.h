@@ -39,3 +39,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define AUDIO_CLICKY
 #define MUSIC_MAP
 #define AUDIO_VOICES
+#define AUDIO_ENABLE_TONE_MULTIPLEXING
+#define AUDIO_TONE_MULTIPLEXING_RATE_DEFAULT 10
+
+/* Tap-Hold */
+// #define HOLD_ON_OTHER_KEY_PRESS
+// comment-out "HOLD_ON_OTHER_KEY_PRESS_PER_KEY" for VIAL
+// #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
